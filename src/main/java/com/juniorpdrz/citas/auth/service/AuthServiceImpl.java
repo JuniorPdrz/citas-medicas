@@ -8,7 +8,6 @@ import com.juniorpdrz.citas.auth.dto.AuthResponse;
 import com.juniorpdrz.citas.auth.dto.LoginRequest;
 import com.juniorpdrz.citas.auth.dto.RegisterRequest;
 import com.juniorpdrz.citas.auth.security.JwtService;
-import com.juniorpdrz.citas.auth.security.UserPrincipal;
 import com.juniorpdrz.citas.shared.exception.DuplicateResourceException;
 import com.juniorpdrz.citas.shared.exception.InvalidCredentialsException;
 import lombok.RequiredArgsConstructor;

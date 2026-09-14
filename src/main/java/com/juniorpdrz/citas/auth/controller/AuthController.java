@@ -1,0 +1,34 @@
+package com.juniorpdrz.citas.auth.controller;
+
+import com.juniorpdrz.citas.auth.domain.port.in.AuthUseCase;
+import com.juniorpdrz.citas.auth.dto.AuthResponse;
+import com.juniorpdrz.citas.auth.dto.LoginRequest;
+import com.juniorpdrz.citas.auth.dto.RegisterRequest;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/auth")
+@RequiredArgsConstructor
+public class AuthController {
+
+    private final AuthUseCase authUseCase;
+
+    @PostMapping("/register")
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        AuthResponse response = authUseCase.register(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        AuthResponse response = authUseCase.login(request);
+        return ResponseEntity.ok(response);
+    }
+}
